@@ -1,109 +1,70 @@
 # tdb-homework-14-MVC-Tech-Blog
-# Unit 14: Model-View-Controller (MVC)
 
-## Overview
+## User Story
 
-In this unit we'll modularize applications following the **Model-View-Controller (MVC)** paradigm. MVC is an architectural pattern that structures a codebase in three distinct sections, according to a software design philosophy known as the **separation of concerns**.  
+```md
+AS A developer who writes about tech
+I WANT a CMS-style blog site
+SO THAT I can publish articles, blog posts, and my thoughts and opinions
+```
 
-Rather than hardcode the HTML for many, many pages, we can dynamically generate the HTML using a template engine. In implementing a template engine, we are separating the concern of client-side rendering from other aspects of the application. This is the **View** layer in the MVC framework. The template engine we will learn and implement in this unit is Handlebars.js.
+## Acceptance Criteria
 
-The **Model** is the data layer of the application. It is concerned with the structure of the database and the logic used to retrieve that data. We'll implement Sequelize as the ORM for querying the database. 
+```md
+GIVEN a CMS-style blog site
+WHEN I visit the site for the first time
+THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in
+WHEN I click on the homepage option
+THEN I am taken to the homepage
+WHEN I click on any other links in the navigation
+THEN I am prompted to either sign up or sign in
+WHEN I choose to sign up
+THEN I am prompted to create a username and password
+WHEN I click on the sign-up button
+THEN my user credentials are saved and I am logged into the site
+WHEN I revisit the site at a later time and choose to sign in
+THEN I am prompted to enter my username and password
+WHEN I am signed in to the site
+THEN I see navigation links for the homepage, the dashboard, and the option to log out
+WHEN I click on the homepage option in the navigation
+THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
+WHEN I click on an existing blog post
+THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment
+WHEN I enter a comment and click on the submit button while signed in
+THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
+WHEN I click on the dashboard option in the navigation
+THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
+WHEN I click on the button to add a new blog post
+THEN I am prompted to enter both a title and contents for my blog post
+WHEN I click on the button to create a new blog post
+THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
+WHEN I click on one of my existing posts in the dashboard
+THEN I am able to delete or update my post and taken back to an updated dashboard
+WHEN I click on the logout option in the navigation
+THEN I am signed out of the site
+WHEN I am idle on the page for more than a set time
+THEN I am automatically signed out of the site 
+```
 
-Last but not least is the **Controller**. Think of it as the intermediary between the View and the Model. The Controller handles input from the user, interacts with the Model to create, read, update, or delete data, and then returns the results of that query to the user via the View layer. We are already familiar with these operations in Express.js apps, but now we'll separate the client-side and server-side routes from each other.
+### Deployment: 32%
+* Application must be deployed to Heroku.
 
-Also in this unit, we'll cover user authentication. We'll build on the password hashing we learned in the previous module and learn to authenticate application users by verifying their credentials. We'll then use sessions and cookies to keep users logged in and authorized to view the content of the app.
+* Application deployed at live URL.
 
-## Key Topics
+* Application loads with no errors.
 
-The following topics will be covered in this unit:
+* Application GitHub URL submitted.
 
-* [Model-View-Controller](https://developer.mozilla.org/en-US/docs/Glossary/MVC)
+* GitHub repository contains application code.
 
-* [Sequelize model](https://sequelize.org/master/class/lib/model.js~Model.html)
+## Review
 
-* [Handlebars.js](https://www.npmjs.com/package/express-handlebars)
+You are required to submit BOTH of the following for review:
 
-  * [Expressions](https://handlebarsjs.com/guide/expressions.html)
+* The URL of the functional, deployed application.
 
-  * [Built-in helpers](https://handlebarsjs.com/guide/builtin-helpers.html)
-
-  * [Partials](https://handlebarsjs.com/guide/partials.html#basic-partials)
-
-  * [Custom helpers](https://www.npmjs.com/package/express-handlebars#helpers)
-
-* Sessions and Cookies
-
-  * [express-session](https://www.npmjs.com/package/express-session)
-
-  * [connect-session-store using Sequelize](https://www.npmjs.com/package/connect-session-sequelize) 
-
-  * [Express.js session cookie](https://github.com/expressjs/session#cookie)
-
-* [Express.js middleware](https://expressjs.com/en/guide/using-middleware.html)
-
-* [ESLint](https://eslint.org/docs/user-guide/configuring)
-
-* [Prettier](https://prettier.io/docs/en/index.html)
-
-## Learning Objectives
-
-You will be employer-ready if you are able to:
-
-* Render dynamic HTML using a template engine, like Handlebars.js.
-
-* Explain and implement MVC modularization in a full-stack web application.
-
-* Configure Heroku for deployment of an application using MySQL.
-
-* Explain the interactions between the Model, View, and Controller.
-
-* Explain separation of concerns and its benefits.
-
-* Implement user authentication.
-
-## Technical Interview Preparation
-
-You will be employer-competitive if you are able to solve the following algorithms and successfully complete the assessments.
-
-### Algorithms
-
-Practicing algorithm-based interview questions is one of the best ways to prepare for interviews. Watch the `📹 Let's Code` video(s) for tips and tricks on how to solve the algorithm.
-
-* [01: Common Element](../../01-Class-Content/14-MVC/03-Algorithms/01-common-element)
-
-* [02: Permutation Substring](../../01-Class-Content/14-MVC/03-Algorithms/02-permutation-substring)
-
-* [03: Concert Flyer](../../01-Class-Content/14-MVC/03-Algorithms/03-concert-flyer)
-
-  * 📹 [Let's Code Concert Flyer!](https://2u-20.wistia.com/medias/42ac9axtbq)
-
-### Assessments
-
-Assess your knowledge by answering technical interview questions and solving coding challenges.
-
-* [Unit 14 Technical Interview Questions](https://forms.gle/ETRxZ6CtutAfpwpg6)
-
-## Homework
-
-For this unit's homework, you'll be building a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. You’ll build this site completely from scratch and deploy it to Heroku. Your app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the `express-session` npm package for authentication.
-
-## Career Connection
-
-Career Services material for this unit is located in the [Career Connection folder](../../01-Class-Content/14-MVC/04-Career-Connection/README.md). For more information about Career Services, including coding milestones, demo days, technical toolkits, workshops, and additional resources, visit the [Career Services website](http://bit.ly/CodingCS).
-
-## Heads-Up
-
-Next week, you'll start working on your second group project! In the next class, you'll be assigned to your project groups and receive the project requirements. Be sure to look over the project requirements carefully, and be ready to brainstorm project ideas with your group.
-
-## Resources
-
-Here are some additional resources to help solidify the topics covered in this unit.
-### Git Guide
-
-Refer to the Git Guide to review the git concept for this unit.
-
-  * 📖 [Git Guide: Prettier](./01-Activities/27-Evr_Prettier)
+* The URL of the GitHub repository, with a unique name and a readme describing the project.
 
 ---
 
-© 2020 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+
